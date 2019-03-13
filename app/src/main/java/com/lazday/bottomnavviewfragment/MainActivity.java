@@ -11,12 +11,14 @@ import android.view.MenuItem;
 import com.lazday.bottomnavviewfragment.fragment.DashboardFragment;
 import com.lazday.bottomnavviewfragment.fragment.HomeFragment;
 import com.lazday.bottomnavviewfragment.fragment.NotifFragment;
+import com.lazday.bottomnavviewfragment.fragment.UserFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     final Fragment homeFragment = new HomeFragment();
     final Fragment dashboardFragment = new DashboardFragment();
     final Fragment notifFragment = new NotifFragment();
+    final Fragment userFragment = new UserFragment();
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
     Fragment fragmentActive = homeFragment;
@@ -39,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
                     fragmentManager.beginTransaction().hide(fragmentActive).show(notifFragment).commit();
                     fragmentActive = notifFragment;
                     return true;
+                case R.id.navigation_user:
+                    fragmentManager.beginTransaction().hide(fragmentActive).show(userFragment).commit();
+                    fragmentActive = userFragment;
+                    return true;
             }
             return false;
         }
@@ -52,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        fragmentManager.beginTransaction().add(R.id.frameLayout, userFragment, "4").hide(userFragment).commit();
         fragmentManager.beginTransaction().add(R.id.frameLayout, notifFragment, "3").hide(notifFragment).commit();
         fragmentManager.beginTransaction().add(R.id.frameLayout, dashboardFragment, "2").hide(dashboardFragment).commit();
         fragmentManager.beginTransaction().add(R.id.frameLayout, homeFragment, "1").commit();
