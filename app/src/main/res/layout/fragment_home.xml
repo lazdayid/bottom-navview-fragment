@@ -6,11 +6,9 @@
     tools:context=".fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home"
-        android:textStyle="bold"
-        android:gravity="center" />
+        android:src="@drawable/ic_account_balance"/>
 
 </FrameLayout>
